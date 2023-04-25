@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dekalb Chamber Events | Month View</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/calendar-styles.css" />
+    <link rel="stylesheet" href="css/event-styles.css" />
+    <script type="module" src="js/frontend/ui/navbar.js" defer></script>
+    <script type="module" src="js/frontend/ui/filters.js" defer></script>
+    <script type="module" src="js/frontend/month.js" defer></script>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="images/DistrictDocketBanner.png" />
+  </head>
+
+  <body>
+    <div class="searchDiv">
+      <form class="search-container" action="" method="post">
+        <label>
+          <input
+            type="text"
+            placeholder=""
+            maxlength="30"
+            id="search-bar"
+            name="search" />
+        </label>
+        <input type="submit" value="Search" />
+      </form>
+    </div>
+
+    <div class="filters">
+      <!-- JS Generates This-->
+    </div>
+
+    <div class="main-container">
+      <div class="title">
+        <!--JS Generates This-->
+      </div>
+
+      <div class="calendar-header">
+        <button id="prev">&lt;</button>
+        <h1><!-- JS generates this --></h1>
+        <button id="next">&gt;</button>
+      </div>
+
+      <div class="calendar">
+        <table>
+          <thead>
+            <tr class="day-titles">
+              <th>Sun</th>
+              <th>Mon</th>
+              <th>Tue</th>
+              <th>Wed</th>
+              <th>Thu</th>
+              <th>Fri</th>
+              <th>Sat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- JS generates this -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="event-modal-wrapper">
+      <div class="event-container">
+        <div id="event-header-bar">
+          <h1 id="event-title"></h1>
+          <button>x</button>
+        </div>
+        <div class="box">
+          <img id="banner" src="" alt="event image" />
+          <h2>Description:</h2>
+          <p id="description-text"></p>
+          <h2>Location:</h2>
+          <p id="location-text"></p>
+          <h2>Date & Time:</h2>
+          <p id="date-time-text"></p>
+          <h2>Website & Contact Information:</h2>
+          <p id="contact-info-text"></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

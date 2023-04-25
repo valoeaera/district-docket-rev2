@@ -1,0 +1,10 @@
+# IDE Settings
+.idea/
+.vscode/
+
+# Node Modules
+node_modules/
+
+# Secrets
+.env
+js/**/creds.js

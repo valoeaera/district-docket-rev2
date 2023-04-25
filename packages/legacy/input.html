@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dekalb Chamber Events | Submit Event</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/event-styles.css" />
+  <link rel="stylesheet" href="css/input-styles.css" />
+  <script type="module" src="js/frontend/ui/navbar.js" defer></script>
+  <script type="module" src="js/frontend/input.js" defer></script>
+  <script type="module" src="js/backend/write/add_event.js" defer></script>
+  <script type="module" src="js/backend/filters/input_fields.js" defer></script>
+  <link rel="icon" type="image/x-icon" href="images/DistrictDocketBanner.png">
+</head>
+
+<body>
+  <div class="title">
+    <!-- JS Generates This -->
+  </div>
+
+<form id="input-form" name="inputForm" action="" method=POST enctype=multipart/form-data class="form-container">
+  <div id="information-pane" class="pane">
+    <div id="event-info">
+      <h2 class="input-section-header">Event Information</h2>
+      <div id="name-input-group" class="text-input">
+        <label for="event-name">Event Name</label>
+        <input required id="event-name" type="text">
+      </div>
+      <div id="date-input-group" class="text-input">
+        <label for="event-date">Event Date</label>
+        <input required id="event-date" type="date" min="2023-01-01" max="2100-12-31" onfocus="this.min=new Date().toISOString().split('T')[0]">
+      </div>
+      <div id="time-input-group" class="text-input">
+        <label for="event-time">Event Time</label>
+        <input required id="event-time" type="time">
+      </div>
+      <div id="cost-input-group" class="text-input">
+        <label for="event-cost">Event Cost</label>
+        <div class="input-icon">
+          <input required id="event-cost" type="number" min="0.00" step="0.01" value="" placeholder="0.00" onfocus="this.placeholder = ''" onblur="if (this.value=='') this.value='0.00'" />
+          <i>$</i>
+        </div>
+      </div>
+      <div id="recurring-input-group" class="checkbox-input">
+        <input id="recurring-event" type="checkbox">
+        <label for="recurring-event">Repeat Event?</label>
+      </div>
+      <div id="frequency-select-group" class="text-input">
+        <label for="frequency-select">Event Frequency</label>
+        <select id="frequency-select">
+        </select>
+      </div>
+    </div>
+    <div id="location-info">
+      <h2 class="input-section-header">Location Information</h2>
+      <div id="street-address-input-group" class="text-input">
+        <label for="street-address">Street Address</label>
+        <input required id="street-address" type="text">
+      </div>
+      <div id="location-name-input-group" class="text-input">
+        <label for="location">Location Name</label>
+        <input required id="location" type="text">
+      </div>
+      <div id="city-input-group" class="text-input">
+        <label for="city">City</label>
+        <input required id="city" type="text">
+      </div>
+      <div id="state-input-group" class="text-input">
+        <label for="state">State</label>
+        <select required id="state">
+        </select>
+      </div>
+      <div id="zip-input-group" class="text-input">
+        <label for="zip">Zip</label>
+        <input required id="zip" type="text" pattern="\d{5}" placeholder="00000" title="00000" minlength="5" maxlength="5">
+      </div>
+    </div>
+    <div id="contact-info">
+      <h2 class="input-section-header">Contact Information</h2>
+      <div id="contact-name-input-group" class="text-input">
+        <label for="contact-name">Contact Name</label>
+        <select required id="contact-name">
+          <option value="" disabled selected hidden>Select Contact Name</option>
+          <!-- empty options for contact names -->
+        </select>
+      </div>
+      <div id="host-org-input-group" class="text-input">
+        <label for="host-org">Host Organization</label>
+        <select required id="host-org">
+          <option value="" disabled selected hidden>Select Host Organization</option>
+          <!-- empty options for host organizations -->
+        </select>
+      </div>
+    </div>
+
+  </div>
+  <div id="description-pane" class="pane">
+    <div id="description-info">
+      <h2 class="input-section-header">Describe Your Event</h2>
+      <div id="description-input" class="text-input big">
+        <label for="description">Description</label>
+        <textarea required id="description"></textarea>
+      </div>
+    </div>
+
+    <div id="tags-info">
+    </div>
+
+    <div id="photo-info">
+      <h2 class="input-section-header">Would you like to upload a photo?</h2>
+      <div class="upload-subgroup">
+        <label for="myfile">Select an Image:</label>
+        <input type="file" id="myfile" name="myfile" accept=".jpg,.jpeg,.png" maxlength="1000000">
+      </div>
+    </div>
+
+    <div id="submit-container" >
+      <button class="submit-button" type="submit">Submit for Approval</button>
+    </div>
+  </div>
+</form>
+
+</body>

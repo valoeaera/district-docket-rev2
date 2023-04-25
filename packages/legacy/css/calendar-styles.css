@@ -1,0 +1,177 @@
+.calendar-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 15px 0;
+  color: var(--gold);
+}
+
+.calendar-header > button {
+  background-color: var(--button-black);
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  font-size: 2rem;
+  color: var(--gold);
+  cursor: pointer;
+}
+
+.calendar-header > h1 {
+  width: 450px;
+  text-align: center;
+}
+
+table {
+  table-layout: fixed;
+  margin-left: auto;
+  margin-right: auto;
+  border-spacing: 12px;
+  width: 100%;
+}
+
+thead {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+  width: 25%;
+}
+
+.days {
+  height: 3.125rem;
+  border-radius: 2px;
+  background-color: var(--white);
+}
+
+.days > span {
+  background-color: transparent;
+  font-size: 18px;
+  padding-left: 0.313rem;
+  padding-top: 0.5rem;
+}
+
+.greyed {
+  background-color: rgb(0 0 0 / 25%);
+  color: white;
+}
+
+.day-titles {
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--gold);
+}
+
+.day-titles > th {
+  font-size: 1rem;
+}
+
+.day-titles-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 1fr;
+}
+
+.day-titles-week > h3,
+button {
+  margin: 5px auto;
+  color: var(--gold);
+}
+
+.day-titles-week > button {
+  border: 1px solid black;
+  min-width: 25px;
+  padding: 3px;
+  background-color: var(--button-black);
+  cursor: pointer;
+}
+
+.day-titles-week > .active-day {
+  background-color: var(--lighter-blue);
+}
+
+.grid-calendar-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  gap: 1rem 1rem;
+  margin: 0 10px;
+}
+
+.grid-calendar-week > div {
+  border-radius: 2px;
+  min-width: 5rem;
+  min-height: 6rem;
+  background-color: var(--white);
+}
+
+.grid-calendar-week > .week {
+  height: 25rem;
+}
+
+.grid-calendar-week > div > h3 {
+  margin: 0.25rem;
+  background-color: transparent;
+  font-size: 1.125rem;
+}
+
+.little-event-tile {
+  display: block;
+  margin: 5px 2px;
+  border-radius: 11px;
+  padding: 0 7px;
+  background-color: red;
+}
+
+/* For Phones */
+@media screen and (max-width: 768px) {
+  .grid-calendar-week {
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 15px;
+  }
+
+  .grid-calendar-week > div {
+    background-color: transparent;
+  }
+
+  .grid-calendar-week > div > h3 {
+    text-align: center;
+    color: white;
+  }
+
+  .calendar-header > h1 {
+    font-size: 20px;
+  }
+
+  .little-event-tile {
+    max-width: 100%;
+    max-height: 1rem;
+    font-size: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+/* For Tablets */
+@media screen and (min-width: 768px) {
+  td {
+    width: 11.25rem;
+  }
+
+  .days {
+    height: 5rem;
+  }
+}
+
+/* For PC's */
+@media screen and (min-width: 1280px) {
+  td {
+    width: 11.25rem;
+  }
+
+  .days {
+    height: 6rem;
+  }
+}

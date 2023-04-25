@@ -1,0 +1,243 @@
+.form-container {
+  display: flex;
+  margin: 10px auto;
+  color: white;
+}
+
+.form-container .pane {
+  position: relative;
+  float: left;
+  margin: 10px;
+  width: 50%;
+}
+
+.form-container #event-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 2fr 2fr 2fr;
+}
+
+.form-container #location-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 2fr 2fr;
+}
+
+.form-container #street-address-input-group {
+  grid-column: 1/-1;
+  width: 95% !important;
+}
+
+.form-container #contact-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 2fr 2fr;
+}
+
+.form-container .input-section-header {
+  display: inline-block;
+  align-self: flex-end;
+  grid-column: 1/-1;
+  padding-left: 30px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.text-input {
+  margin: 10px auto;
+  border: 1px solid white;
+  border-radius: 4px;
+  width: 90%;
+  height: 25px;
+  padding: 10px;
+}
+
+.big {
+  height: 100px;
+}
+
+#description-input {
+  margin: 10px 0;
+  width: 96.5%;
+}
+
+.text-input > label {
+  position: relative;
+  top: -20px;
+  padding: 0 5px;
+  background-color: var(--bg-blue);
+  font-size: 12px;
+  color: white;
+  user-select: none;
+}
+
+.text-input input,
+select {
+  position: relative;
+  top: -13px;
+  border: none;
+  width: 100%;
+  height: 20px;
+  color-scheme: dark;
+}
+
+input,
+textarea {
+  outline: none;
+}
+
+select {
+  background-color: var(--bg-blue);
+}
+
+option:checked {
+  background-color: var(--bg-blue);
+}
+
+.text-input textarea {
+  position: relative;
+  top: -13px;
+  border: none;
+  width: 100%;
+  height: 100%;
+  color-scheme: dark;
+  resize: none;
+}
+
+.input-icon {
+  position: relative;
+  top: -13px;
+}
+
+.input-icon > i {
+  position: absolute;
+  display: block;
+  transform: translate(0, -50%);
+  top: 50%;
+  pointer-events: none;
+  width: 25px;
+  text-align: center;
+  font-style: normal;
+}
+
+.input-icon > input {
+  top: 0;
+  width: 90%;
+  padding-left: 25px;
+  color-scheme: dark;
+}
+
+.checkbox-input {
+  margin: auto;
+}
+
+#description-pane {
+  margin-top: 20px;
+}
+
+#categories-input-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 6px;
+  margin: 10px 0;
+}
+
+/* Get me out of webdev hell please */
+#categories-input-group > div {
+  display: flex;
+}
+
+#categories-input-group > div > label {
+  margin: 0 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#photo-info {
+  margin: 10px auto;
+}
+
+#photo-info > p {
+  text-align: center;
+}
+
+#photo-info > .upload-subgroup {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  margin: 10px auto;
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 10px 0;
+  text-align: center;
+}
+
+#photo-info > .upload-subgroup > input {
+  text-align: center;
+}
+
+#submit-container {
+  position: absolute;
+  bottom: 4.5em;
+  display: flex;
+  width: 100%;
+}
+
+#login-container {
+  flex-direction: column;
+  margin: 0 auto;
+  width: clamp(400px, 50%, 9999px);
+}
+
+#login-container > h2 {
+  text-align: center;
+}
+
+.form-container .submit-button {
+  margin: 0 auto;
+  border: 1px solid white;
+  border-radius: 4px;
+  width: 94%;
+  height: 50px;
+  background-color: var(--gold);
+  font-size: 20px;
+  font-weight: bolder;
+  color: white;
+  cursor: pointer;
+}
+
+#error-message {
+  margin: 10px auto;
+  border-radius: 4px;
+  width: clamp(400px, 50%, 9999px);
+  padding: 10px 0;
+  background-color: rgb(255 255 255 / 20%);
+  text-align: center;
+  color: #f22;
+}
+
+/* For tablets */
+@media screen and (max-width: 1000px) {
+  .form-container {
+    display: block;
+    max-width: 640px;
+  }
+
+  .form-container .pane {
+    width: 94%;
+  }
+
+  #submit-container {
+    position: relative;
+    bottom: 0;
+  }
+}
+
+/* For PC's */
+@media screen and (min-width: 1280px) {
+  .form-container {
+    max-width: 1280px;
+  }
+}

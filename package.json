@@ -1,0 +1,114 @@
+{
+  "name": "district-docket",
+  "version": "2.0.0",
+  "description": "A calendar webapp for organizing events",
+  "keywords": [
+    "JS",
+    "NoSQL",
+    "CSS",
+    "HTML",
+    "calendar",
+    "events"
+  ],
+  "homepage": "https://github.com/valoeaera/district-docket-v2#readme",
+  "bugs": {
+    "url": "https://github.com/valoeaera/district-docket-v2/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valoeaera/district-docket-v2.git"
+  },
+  "license": "ISC",
+  "type": "module",
+  "main": "index.html",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npx lerna run build",
+    "dev": "npx lerna run dev --parallel",
+    "lint:css": "stylelint '**/*.css' --aei",
+    "lint:css:fix": "stylelint '**/*.css' --aei --fix",
+    "lint:js": "eslint . --ext .js,.jsx",
+    "lint:js:fix": "npm run lint:js -- --fix",
+    "lint:md": "eslint . --ext .md,.mdx",
+    "lint:md:fix": "npm run lint:md -- --fix",
+    "prepare": "husky install",
+    "sort": "sort-package-json 'package.json' 'packages/*/package.json'",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tidy": "bash .husky/pre-commit"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "bracketSameLine": true,
+    "bracketSpacing": true,
+    "htmlWhitespaceSensitivity": "css",
+    "jsxSingleQuote": false,
+    "semi": true,
+    "singleQuote": false,
+    "tabWidth": 2,
+    "trailingComma": "es5"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+    },
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "plugins": [
+      "react"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    "rules": {},
+    "overrides": [],
+    "ignorePatterns": [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/storybook-static/**"
+    ]
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-prettier"
+    ],
+    "ignoreFiles": [
+      "build/**",
+      "node_modules/**",
+      "packages/legacy/**/*.css"
+    ],
+    "rules": {
+      "custom-property-pattern": "^[#.:]*(--|[a-z])*[a-z]+(-[a-z]+)*",
+      "selector-class-pattern": "^[#.:]*(--|[a-z])*[a-z]+(-[a-z]+)*"
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.3",
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^18.13.0",
+    "babel-loader": "^8.3.0",
+    "eslint": "^8.26.0",
+    "eslint-plugin-react": "^7.31.10",
+    "husky": "^8.0.0",
+    "lerna": "^6.6.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "2.7.1",
+    "sort-package-json": "^2.1.0",
+    "stylelint": "^14.14.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^29.0.0"
+  }
+}

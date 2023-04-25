@@ -1,0 +1,220 @@
+label,
+input,
+button {
+  /* or `border-box` */
+  box-sizing: content-box;
+}
+
+#card-container a:link {
+  color: var(--white);
+} /* unvisited link */
+#card-container a:visited {
+  color: var(--white);
+} /* visited link */
+#card-container a:hover {
+  color: var(--white);
+} /* mouse over link */
+#card-container a:active {
+  color: var(--white);
+} /* selected link */
+
+/* Define container grid for all card elements */
+#card-container {
+  display: grid;
+  justify-items: center;
+  background-color: transparent;
+}
+
+/* Special rules because our class names are a mess, MODULES!!!!! */
+#event-list #card-container {
+  grid-template-columns: 1fr;
+}
+
+/* Contain link to only be clickable within itself */
+#card-container a {
+  display: inline-block;
+  user-select: none;
+  width: 100%;
+  max-width: 250px;
+}
+
+#event-list #card-container > a {
+  margin-bottom: 15px;
+}
+
+/* Shrink card slightly on click */
+#card-container a:active {
+  transform: scale(0.95);
+}
+
+/* Set card size, border, etc */
+.card {
+  position: relative;
+  margin: 0 auto;
+  width: clamp(1px, 250px, 100%);
+  height: 300px;
+  background-color: var(--darker-blue);
+  text-align: center;
+  border-radius: 3%;
+  outline: 3px solid black;
+  overflow: hidden;
+}
+
+/* Set image sizing */
+.card img {
+  margin: 5px 0;
+  border-radius: 10px;
+  width: auto;
+  max-width: 100%;
+  max-height: 120px;
+}
+
+/* Set size of card text area */
+.card-text {
+  height: 130px;
+  background-color: var(--darker-blue);
+}
+
+/* Necessary to set background so page background color does not bleed through */
+.card-text-item {
+  margin: 5px;
+  background-color: var(--darker-blue);
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+
+.card-text * {
+  max-width: 100%;
+}
+
+/* Set basic stylings for the cta portion of the event cards */
+.card-cta {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 30px;
+  background-color: var(--lighter-blue);
+  margin: 0 auto;
+}
+
+/* Necessary to set background so page background color does not bleed through */
+.card-cta-info {
+  background-color: var(--lighter-blue);
+}
+
+/* Ensure cta cards always have same styling */
+#card-container a:link {
+  color: var(--white);
+} /* unvisited link */
+#card-container a:visited {
+  color: var(--white);
+} /* visited link */
+#card-container a:hover {
+  color: var(--white);
+} /* mouse over link */
+#card-container a:active {
+  color: var(--white);
+} /* selected link */
+
+.event-modal-wrapper {
+  --header-height: 40px;
+
+  display: none;
+  margin: 10px auto;
+  width: 954px;
+  padding: 0 10%;
+  padding-bottom: 10px;
+}
+
+#event-header-bar {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: var(--header-height);
+}
+
+#event-header-bar > h1 {
+  text-align: center;
+  width: 100%;
+}
+
+#event-header-bar > button {
+  position: absolute;
+  right: 0;
+  margin: 0;
+  border: none;
+  width: var(--header-height);
+  height: var(--header-height);
+  background: none;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+}
+
+.event-container {
+  display: block;
+}
+
+.event-container h1 {
+  color: #edbd24;
+  text-align: center;
+}
+
+.box {
+  margin: 0 auto;
+  min-height: 550px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 5px;
+  background: #d9d9d9;
+}
+
+.box img {
+  width: 100%;
+  height: auto;
+}
+
+.box h2 {
+  background-color: #d9d9d9;
+  text-align: left;
+}
+
+.box p {
+  margin-bottom: 10px;
+  background-color: #d9d9d9;
+  text-align: left;
+}
+
+/* Readjust modal container */
+@media screen and (max-width: 1000px) {
+  .event-modal-wrapper {
+    box-sizing: border-box;
+    width: 100vw;
+  }
+}
+
+/* For tablets */
+@media screen and (min-width: 768px) {
+  #event-list #card-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* For PC's */
+@media screen and (min-width: 1280px) {
+  #event-list #card-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+/* For larger screens */
+@media screen and (min-width: 1500px) {
+  #event-list #card-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
