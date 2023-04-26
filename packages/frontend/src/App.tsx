@@ -1,13 +1,54 @@
 // React & 3rd Party Imports
-import { useState } from "react";
+import { lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// Image & Styling Imports
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+// Components
+import { Navbar } from "./components";
+
+// Types
+import { View } from "./index";
 
 function App() {
-  const [count, setCount] = useState(0);
+  // Load Views
+  const Admin = lazy(() => import("./views/Admin"));
+  const Input = lazy(() => import("./views/Input"));
+  const List = lazy(() => import("./views/List"));
+  const Month = lazy(() => import("./views/Month"));
+  const Week = lazy(() => import("./views/Week"));
+
+  // Views Object passed to NavBar
+  const views: View[] = [
+    {
+      title: "Event List",
+      url: "/list",
+      component: <List />,
+      align: "left",
+    },
+    {
+      title: "Month View",
+      url: "/month",
+      component: <Month />,
+      align: "left",
+    },
+    {
+      title: "Week View",
+      url: "/week",
+      component: <Week />,
+      align: "left",
+    },
+    {
+      title: "Input",
+      url: "/input",
+      component: <Input />,
+      align: "right",
+    },
+    {
+      title: "Admin",
+      url: "/admin",
+      component: <Admin />,
+      align: "right",
+    },
+  ];
 
   fetch(`${import.meta.env.VITE_API_BASE_URL}/test`)
     .then((response) => response.json())
@@ -15,28 +56,22 @@ function App() {
     .catch((error) => console.error(error));
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <BrowserRouter>
+      <Navbar icon="favicon.ico" views={views} />
+      <Suspense>
+        <Routes>
+          {views.map((view: View) => {
+            return (
+              <Route
+                key={view.title}
+                path={view.url}
+                element={view.component}
+              />
+            );
+          })}
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   );
 }
 
