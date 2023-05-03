@@ -16,7 +16,6 @@
 
 .text-input > input {
   transform: translateY(-10px);
-  box-sizing: border-box;
   border: none;
   outline: none;
   width: 100%;
