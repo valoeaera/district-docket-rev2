@@ -20,7 +20,7 @@ function App() {
   const views: View[] = [
     {
       title: "Event List",
-      url: "/list",
+      url: "/",
       component: <List />,
       align: "left",
     },

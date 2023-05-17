@@ -1,19 +1,34 @@
 // Styles
 import "./Checkbox.css";
 
+// Other
+import camelCaseify from "../camelCaseify";
+
 interface Props {
-  label: string;
-  className?: string;
+  // Required Props:
+  label: string; //                         Text to be displayed in the label for this input element
+  onChange: (inputKV: object) => void; //   Function to control input, takes an object of structure { inputID: inputValue }
+
+  // Optional Props:
+  className?: string; //    additional classNames; if applicable
+  isDisabled?: boolean; //  whether the element is disabled
 }
 
 const Checkbox = (props: Props) => {
-  const hyphenatedLabel = props.label.toLowerCase().replaceAll(" ", "-");
+  const camelCasedLabel = camelCaseify(props.label);
+
   return (
     <div
-      id={`${hyphenatedLabel}-input-group`}
+      id={`${camelCasedLabel}-input-group`}
       className={props.className ? `checkbox ${props.className}` : "checkbox"}>
-      <input id={hyphenatedLabel} type="checkbox" />
-      <label htmlFor={hyphenatedLabel}>{props.label}</label>
+      <input
+        id={camelCasedLabel}
+        onChange={(event) => {
+          props.onChange({ [camelCasedLabel]: event.target.value });
+        }}
+        type="checkbox"
+      />
+      <label htmlFor={camelCasedLabel}>{props.label}</label>
     </div>
   );
 };
