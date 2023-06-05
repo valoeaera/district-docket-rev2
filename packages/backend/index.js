@@ -3,6 +3,9 @@ import cors from "cors";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
 import dotenv from "dotenv";
+
+import loginToFirebase from "./src/loginMethods.js";
+
 dotenv.config();
 
 // Initialize Firebase SDK
@@ -14,6 +17,13 @@ const firebaseApp = initializeApp({
   messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.FIREBASE_APP_ID,
 });
+
+loginToFirebase(
+  firebaseApp,
+  process.env.FIREBASE_UNAME,
+  process.env.FIREBASE_PWORD
+);
+
 const firebaseDB = getFirestore(firebaseApp);
 
 // Create a new Express app
