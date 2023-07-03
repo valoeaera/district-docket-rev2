@@ -1,3 +1,6 @@
+// Types
+import InputChangeHandler from "../../types/types";
+
 // Styles
 import "./Dropdown.css";
 
@@ -11,13 +14,14 @@ interface Option {
 
 interface Props {
   // Required Props:
-  label: string; //                         Text to be displayed in the label for this input element
-  onChange: (inputKV: object) => void; //   Function to control input, takes an object of structure { inputID: inputValue }
-  options: Option[]; //                     List of options in form {labelToDisplay: string, valueOfOption: string/number}
+  label: string; //                             Text to be displayed in the label for this input element
+  onChange: InputChangeHandler["onChange"]; //  Function to control input
+  options: Option[]; //                         List of options in form {labelToDisplay: string, valueOfOption: string/number}
 
   // Optional Props:
-  className?: string; //    additional classNames; if applicable
-  isDisabled?: boolean; //  whether the element is disabled
+  className?: string; //      additional classNames; if applicable
+  isDisabled?: boolean; //    whether the element is disabled
+  value?: string | number; // Value the input currently holds, controlled by parent components
 }
 
 const Dropdown = (props: Props) => {
@@ -32,8 +36,9 @@ const Dropdown = (props: Props) => {
         disabled={props.isDisabled}
         id={camelCasedLabel}
         onChange={(event) => {
-          props.onChange({ [camelCasedLabel]: event.target.value });
-        }}>
+          props.onChange(camelCasedLabel, event.target.value, "Dropdown");
+        }}
+        value={props.value}>
         {props.options.map((option) => (
           <option key={option.label} value={option.value}>
             {option.label}
