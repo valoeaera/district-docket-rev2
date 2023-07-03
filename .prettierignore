@@ -1,2 +1,5 @@
 # Ignore Legacy code
 packages/legacy/*
+
+# Ignore README
+README.md
