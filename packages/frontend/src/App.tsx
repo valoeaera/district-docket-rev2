@@ -37,7 +37,7 @@ function App() {
       align: "left",
     },
     {
-      title: "Input",
+      title: " Event Input",
       url: "/input",
       component: <Input />,
       align: "right",
@@ -49,11 +49,6 @@ function App() {
       align: "right",
     },
   ];
-
-  fetch(`${import.meta.env.VITE_API_BASE_URL}/test`)
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((error) => console.error(error));
 
   return (
     <BrowserRouter>

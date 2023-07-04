@@ -1,7 +1,15 @@
 import express from "express";
 import cors from "cors";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDocs,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore/lite";
 import dotenv from "dotenv";
 
 import loginToFirebase from "./src/loginMethods.js";
@@ -29,19 +37,54 @@ const firebaseDB = getFirestore(firebaseApp);
 // Create a new Express app
 const app = express();
 
-// Enable CORS middleware
+// Enable middleware
 app.use(cors());
+app.use(express.json());
 
 // Define a route to get data from Firebase
-app.get("/test", async (req, res) => {
+app.get("/", async (req, res) => {
+  res.status(200).send("Working!");
+});
+
+app.post("/event/new", async (req, res) => {
   try {
-    const testCollection = collection(firebaseDB, "test-data");
-    const testSnapshot = await getDocs(testCollection);
-    const testData = testSnapshot.docs.map((doc) => {
-      return doc.data();
+    // This is what will be destructured into the document, but we must do some manipulation first.
+    const eventData = req.body;
+
+    // Organization is stored as a reference to a document in the organizations collection.
+    // We need to look up the reference for the passed organization name and add it to the data.
+    const orgRef = collection(firebaseDB, "organizations");
+    const orgQuery = query(
+      orgRef,
+      where("organizationName", "==", eventData.hostOrganization)
+    );
+    const orgQuerySnap = await getDocs(orgQuery);
+    orgQuerySnap.forEach((doc) => {
+      eventData.hostOrganization = `organizations/${doc.id}`;
     });
-    res.json(testData);
+
+    // Contact is also stored as a reference, but it is a sub-collection of each organization document.
+    // We must use the reference we gained from above to find the person reference.
+    const peopleRef = collection(
+      firebaseDB,
+      `${eventData.hostOrganization}/people`
+    );
+    const peopleQuery = query(
+      peopleRef,
+      where("name", "==", eventData.contactName)
+    );
+    const peopleQuerySnap = await getDocs(peopleQuery);
+    peopleQuerySnap.forEach((doc) => {
+      eventData.contactName = `${eventData.hostOrganization}/people/${doc.id}`;
+    });
+
+    eventData.eventCost = parseFloat(eventData.eventCost);
+    const eventDocRef = await addDoc(doc(firebaseDB, "events"), eventData);
+
+    // Everything went ok!
+    res.status(201).send(`Added document with ID: ${eventDocRef.id}.`);
   } catch (error) {
+    // Something went wrong!
     console.error(error);
     res.status(500).send("Internal server error");
   }

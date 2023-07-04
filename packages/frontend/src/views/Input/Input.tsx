@@ -11,46 +11,14 @@ import {
 } from "../../components";
 
 // Types
-import InputChangeHandler from "../../types/types";
+import { Event, InputChangeHandler } from "../../types/types";
 
 // Styles
-import "./input.css";
+import "./Input.css";
 
-interface Event {
-  eventName: string;
-  eventDate: string;
-  eventTime: string;
-  eventCost: number;
-  repeatEvent: boolean;
-  eventFrequency: string | null;
-  venueAddress: string;
-  venueName: string;
-  venueCity: string;
-  venueState: string;
-  venueZIPCode: string;
-  contactName: string;
-  hostOrganization: string;
-  description: string;
-  tags: string[];
-  image: any;
-}
-
-const VALID_TAGS = [
-  "Recreation & Sports",
-  "Arts & Culture",
-  "Continuous Education",
-  "Government",
-  "Schools",
-  "Family-Friendly",
-  "Chamber of Commerce",
-  "Clubs & Organizations",
-  "Holiday",
-  "Young Professionals",
-  "Community",
-  "Public Library",
-  "Festivals & Celebrations",
-  "Networking",
-];
+// Other
+import US_POSTAL_CODES from "./USPostalCodes.json"; // Custom-formatted array of all US states (plus a couple other places) with name and post code.
+import VALID_TAGS from "./ValidTags.json"; // Array of valid event tags.
 
 const Input = () => {
   const defaultEvent: Event = {
@@ -63,17 +31,18 @@ const Input = () => {
     venueAddress: "",
     venueName: "",
     venueCity: "",
-    venueState: "MI",
+    venueState: "",
     venueZIPCode: "",
     contactName: "",
     hostOrganization: "",
     description: "",
     tags: [],
     image: null,
+    approvalStatus: "pending",
   };
   const [eventInfo, setEventInfo] = useState(defaultEvent);
 
-  const changeHandler: InputChangeHandler["onChange"] = (
+  const changeHandler: InputChangeHandler = (
     fieldName,
     fieldValue,
     inputType
@@ -111,8 +80,12 @@ const Input = () => {
 
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(eventInfo);
-    setEventInfo(defaultEvent);
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/event/new`, {
+      method: "POST",
+      headers: new Headers({ "Content-Type": "application/json" }),
+      body: JSON.stringify(eventInfo),
+    }).catch((error) => console.error(error));
+    setEventInfo(defaultEvent); // Comment out for testing purposes
   };
 
   return (
@@ -193,11 +166,7 @@ const Input = () => {
         <Dropdown
           label="Venue State"
           onChange={changeHandler}
-          options={[
-            { label: "IN", value: "IN" },
-            { label: "MI", value: "MI" },
-            { label: "OH", value: "OH" },
-          ]}
+          options={[{ label: "-", value: "" }, ...US_POSTAL_CODES]}
           value={eventInfo.venueState}
         />
         <TextField
@@ -224,6 +193,7 @@ const Input = () => {
           label="Contact Name"
           onChange={changeHandler}
           options={[
+            { label: "-", value: "" },
             { label: "Val Roudebush", value: "Val Roudebush" },
             { label: "Ivy Goyetche", value: "Ivy Goyetche" },
           ]}
@@ -233,6 +203,7 @@ const Input = () => {
           label="Host Organization"
           onChange={changeHandler}
           options={[
+            { label: "-", value: "" },
             { label: "District Docket", value: "District Docket" },
             { label: "Modern Arcane", value: "Modern Arcane" },
           ]}
@@ -240,9 +211,9 @@ const Input = () => {
         />
       </Section>
       <Section id="image-upload-section" label="Upload Your Image">
-        <input type="file" />
+        <input id="image-upload" type="file" />
         <button id="submit-button" type="submit">
-          submit me!
+          Submit Event for Approval
         </button>
       </Section>
     </form>
