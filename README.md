@@ -68,13 +68,15 @@ Submitting an event:
         - [x] Section for general event information such as name, time, and cost
         - [ ] Ability to create recurring events
         - [x] Section for location information such as Venue Address and name options
-        - [ ] State is a dropdown from all 50 states that will autocomplete as the user types
+        - [x] State is a dropdown from all 50 states 
+            - [ ] that will autocomplete as the user types
         - [ ] Section for contact information with a dropdown that populates with organizations in the database
         - [ ] Once an organization is selected from the dropdown, a second dropdown showing the names of people at the organization will appear. These are tied to contact information.
         - [x] Section for an event description.
-        - [ ] Section to select tags (maybe replace with a multiselect)
+        - [x] Section to select tags
+            - [ ] multiselect
         - [ ] Section to upload a thumbnail image
-        - [ ] Submit button that adds the event to the database as an "Unapproved event"
+        - [x] Submit button that adds the event to the database as an "Unapproved event"
 
 Administrators:
 
