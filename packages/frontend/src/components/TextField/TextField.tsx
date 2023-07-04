@@ -1,16 +1,16 @@
 // Types
-import InputChangeHandler from "../../types/types";
+import { InputChangeHandler } from "../../types/types";
 
 // Styles
 import "./TextField.css";
 
 // Other
-import camelCaseify from "../camelCaseify";
+import camelCaseify from "../../functions/camelCaseify";
 
 interface Props {
   // Required Props:
   label: string; //                             Text to be displayed in the label for this input element
-  onChange: InputChangeHandler["onChange"]; //  Function to control input
+  onChange: InputChangeHandler; //              Function to control input
   type: string; //                              HTML <input> type to be used for this input element
 
   // Optional Props:

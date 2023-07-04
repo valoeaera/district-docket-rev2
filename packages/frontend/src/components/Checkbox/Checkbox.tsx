@@ -1,16 +1,16 @@
 // Types
-import InputChangeHandler from "../../types/types";
+import { InputChangeHandler } from "../../types/types";
 
 // Styles
 import "./Checkbox.css";
 
 // Other
-import camelCaseify from "../camelCaseify";
+import camelCaseify from "../../functions/camelCaseify";
 
 interface Props {
   // Required Props:
   label: string; //                             Text to be displayed in the label for this input element
-  onChange: InputChangeHandler["onChange"]; //  Function to control input
+  onChange: InputChangeHandler; //              Function to control input
   value: boolean; //                            Handles checkbox state
 
   // Optional Props:

@@ -1,11 +1,11 @@
 // Types
-import InputChangeHandler from "../../types/types";
+import { InputChangeHandler } from "../../types/types";
 
 // Styles
 import "./Dropdown.css";
 
 // Other
-import camelCaseify from "../camelCaseify";
+import camelCaseify from "../../functions/camelCaseify";
 
 interface Option {
   label: string;
@@ -15,7 +15,7 @@ interface Option {
 interface Props {
   // Required Props:
   label: string; //                             Text to be displayed in the label for this input element
-  onChange: InputChangeHandler["onChange"]; //  Function to control input
+  onChange: InputChangeHandler; //              Function to control input
   options: Option[]; //                         List of options in form {labelToDisplay: string, valueOfOption: string/number}
 
   // Optional Props:

@@ -1,9 +1,9 @@
 // Types
-import InputChangeHandler from "../../types/types";
+import { InputChangeHandler } from "../../types/types";
 
 interface Props {
   id?: string; //                               Pass through ID, if needed
-  onChange: InputChangeHandler["onChange"]; //  Function to control input
+  onChange: InputChangeHandler; //              Function to control input
   value: string; //                             Value controlled by the parent element
 }
 
