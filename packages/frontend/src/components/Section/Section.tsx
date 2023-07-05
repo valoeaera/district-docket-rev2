@@ -1,11 +1,13 @@
-// Styles
+// React & 3rd party Imports
 import { ReactElement } from "react";
+
+// Styles
 import "./Section.css";
 
 interface Props {
   id?: string; //                               Pass through ID, if needed
   label: string; //                             Label for header element
-  children?: ReactElement | ReactElement[]; //  Any sub-components to render
+  children?: string | ReactElement | ReactElement[]; //  Any sub-components to render
 }
 
 const Section = (props: Props) => {

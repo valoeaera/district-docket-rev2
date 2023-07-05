@@ -1,4 +1,43 @@
 .card {
-  border: 2px solid yellow;
-  word-break: break-all;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  background-color: var(--bg-color-1d);
+}
+
+.card-header {
+  display: flex;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--off-white);
+  border-radius: 4px 4px 0 0;
+  padding: 8px 10px;
+  background-color: var(--accent-color-1d);
+  font-weight: bold;
+}
+
+.card-contents {
+  display: flex;
+  margin: auto 0;
+}
+
+.image {
+  flex-shrink: 0;
+  margin: 10px 0;
+  border-right: 1px solid;
+  width: 40%;
+  padding: 0 10px;
+}
+
+.information-container {
+  margin: 8px 10px;
+}
+
+.expand-button {
+  margin: auto;
+  margin-right: 0 !important;
+}
+
+.expand-button > img {
+  height: 20px;
+  aspect-ratio: 1 / 1;
 }

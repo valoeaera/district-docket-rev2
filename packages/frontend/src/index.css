@@ -3,6 +3,7 @@
   --navbar-ht: 40px;
 
   /* Backgrounds */
+  --bg-color-1d: #13171b;
   --bg-color: #2b333b;
   --bg-color-1l: #697c90;
   --bg-color-2l: #a7c6e5;
@@ -11,6 +12,9 @@
   --accent-color: #fc6051;
   --accent-color-1d: #a74036;
   --accent-color-2d: #521f1a;
+
+  /* Off-white */
+  --off-white: rgb(255 255 255 / 87%);
 
   /* Text Junk */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
